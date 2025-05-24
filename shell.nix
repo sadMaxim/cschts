@@ -21,7 +21,6 @@
           pkgs.terraform
           pkgs.nodejs
           pkgs.nodePackages.npm
-          pkgs.nodePackages.npx
           pkgs.typescript-language-server
           pkgs.svelte-language-server
           pkgs.cabal-install
