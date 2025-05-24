@@ -3,35 +3,6 @@
   perSystem = { system, inputs', pkgs, self', ... }:
     {
 
-  packages.web = pkgs.stdenv.mkDerivation {
-    pname = "page-sveltekit-app";
-    version = "1.0.0";
-    src = ./.;
-    nativeBuildInputs = [ pkgs.nodejs pkgs.nodePackages.npm ];
-    buildPhase = ''
-      export HOME=$(mktemp -d) 
-      npm install
-      # npm run build
-    '';
-    installPhase = ''
-      mkdir -p $out
-      cp -r build $out/
-    '';
-
-    dontUseNodeModules = true;
-    meta = {
-      description = "A SvelteKit project built with npm";
-      license = pkgs.lib.licenses.mit;
-    };
-  };
-
-   packages.web1 =  inputs.napalm.legacyPackages.${system}.buildPackage ./. { 
-      nodejs = pkgs.nodejs;
-      postNpmHook = ''
-        npm install
-        npm run build
-      '';
-     };
    packages.web = 
       let
         _name = "web-preview";
